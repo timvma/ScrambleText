@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scramble Text Vanilla Javascript</title>
+    <style>
+        *{padding: 0;margin: 0;}
+        body {background-color: #000;}
+        .hero {
+            color: #fff; 
+            display: grid;
+            place-items: center;
+            width: 100%;
+            height: 100vh;
+        }
+        [data-scramble-text] {
+            opacity: 0.5;
+        }
+        
+        .hello {
+            width: 100%;
+            max-width: 90vw;
+            overflow: hidden;
+            height: max-content;   
+        }
+    </style>
+    <script defer src="app.js"></script>
+</head>
+<body>
+    
+    <div class="hero">
+        <h1 class="hello" data-scramble-text>Ipsum dolor sit amet consectetur adipisicing elit</h1>
+    </div>
+
+    <section>
+
+        
+    </section>
+
+
+</body>
+</html>
