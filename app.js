@@ -1,76 +1,36 @@
-let texts = document.querySelectorAll('[data-scramble-text]')
-function shuffleArray(x) {
-    let array = x
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-}
+let txt = document.querySelectorAll('[data-scramble-text]')
 
-texts.forEach(text => {
-    let original = text.textContent.split("")
-    let random = text.textContent.split("") 
-    text.textContent=''
+function sA(x) {let array = x; for (let i = array.length - 1; i > 0; i--) {let j = Math.floor(Math.random() * (i + 1));[array[i], array[j]] = [array[j], array[i]];}return array;}
+
+txt.forEach(t => {
+    let original = t.textContent.split("")
+    let random = t.textContent.split("") 
+    t.tContent=''
     let origin = document.createElement('span')
     let container = document.createElement('span')
  
-    let jumble = shuffleArray(random)
+    let jumble = sA(random)
     
-    let few = 0
+    let c = 0
 
-  
-
-    text.appendChild(origin)
-    text.appendChild(container)
+    t.appendChild(origin)
+    t.appendChild(container)
 
     let looper =  setInterval(() => {
-        origin.textContent += original[few]
+        origin.textContent += original[c]
 
         jumble.pop()
-        shuffleArray(jumble)
+        sA(jumble)
         container.textContent = jumble.join("")
-        few++;
+        c++;
 
-        if(few > original.length-1){
+        if(c > original.length-1){
           
             clearInterval(looper)
 
         }
-        
-
     }, 50 );
     
-
-    
-
-
-   
-
-    
-
-
-
-
-
-
-
-
-
- 
-
-
-   
-        
-    
-
-        
-
-    
-      
-
-
-
 
 
     
