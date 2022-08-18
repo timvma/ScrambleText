@@ -7,7 +7,25 @@
     <title>Scramble Text Vanilla Javascript</title>
     <style>
         *{padding: 0;margin: 0;}
-        body {background-color: #000;}
+        body {background-color: #000;padding-bottom:100px;}
+        h2 {padding:20px 0;}
+        .wrapper {
+            width: 94vw;
+            margin: 0 auto;
+            max-width: 1000px;
+            color: #fff;
+        }
+
+        textarea {
+            background-color: #333;
+            border: none;
+            color: #fff;
+            width: 100%;
+            height: 200px;
+            max-width: 1000px;
+            padding: 10px;
+        }
+
         .hero {
             color: #fff; 
             display: grid;
@@ -15,7 +33,7 @@
             width: 100%;
             height: 100vh;
         }
-        [data-scramble-text] {
+        [data-scramble-text] span:last-child {
             opacity: 0.5;
         }
         
@@ -24,6 +42,7 @@
             max-width: 90vw;
             overflow: hidden;
             height: max-content;   
+            text-align: center;
         }
     </style>
     <script defer src="app.js"></script>
@@ -31,30 +50,41 @@
 <body>
     
     <div class="hero">
-        <h1 class="hello" data-scramble-text>Scramble Text Vanilla Javascript</h1>
+        <h1 class="hello" data-scramble-text style="opacity:0;">Scramble Text Vanilla Javascript</h1>
     </div>
 
     <section>
-        <h2>HTML</h2>
-        <pre>
-            <h1 class="hello" data-scramble-text>Scramble Text Vanilla Javascript</h1>
-        </pre>
-        <p></p>
-        <h2>Javscript</h2>
-        <pre>
-            let txt = document.querySelectorAll('[data-scramble-text]')
+        <div class="wrapper">
+            <h2>HTML</h2>
+            <textarea>
 
-function sA(x) {let array = x; for (let i = array.length - 1; i > 0; i--) {let j = Math.floor(Math.random() * (i + 1));[array[i], array[j]] = [array[j], array[i]];}return array;}
+<h1 class="hello" data-scramble-text style="opacity:0;">
+    Scramble Text Vanilla Javascript
+</h1>
+            </textarea>
+            <p></p>
+            <h2>Javscript</h2>
+            <textarea>
 
+
+let txt = document.querySelectorAll('[data-scramble-text]')
+    
+function sA(x) { 
+    let array = x;
+    for (let i = array.length - 1; i > 0; i--){
+        let j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
+    
 txt.forEach(t => {
     let original = t.textContent.split("")
     let random = t.textContent.split("") 
     t.tContent=''
     let origin = document.createElement('span')
     let container = document.createElement('span')
- 
     let jumble = sA(random)
-    
     let c = 0
 
     t.appendChild(origin)
@@ -69,18 +99,18 @@ txt.forEach(t => {
         c++;
 
         if(c > original.length-1){
-          
+            
             clearInterval(looper)
 
         }
     }, 50 );
-    
-
-
-    
 
 })
-        </pre>
+            </textarea>
+        </div>
+
+
+       
 
         
     </section>
